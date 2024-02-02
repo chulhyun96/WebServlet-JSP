@@ -9,11 +9,15 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository rep;
 
-    public ProductService() {
+    public ProductService() throws ClassNotFoundException {
         this.rep = new ProductRepository();
     }
 
     public List<Product> findAll() {
         return rep.findAll();
+    }
+
+    public List<Product> findByCategory(int category) {
+        return rep.findByCategory(category);
     }
 }

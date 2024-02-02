@@ -14,19 +14,29 @@ import java.util.List;
 
 
 //controller
-@WebServlet("list")
-public class ListController extends HttpServlet {
+@WebServlet("/category/list")
+public class ListAllController extends HttpServlet {
     private final ProductService service;
 
-    public ListController() {
+    public ListAllController() throws ClassNotFoundException {
         this.service = new ProductService();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Product> list = service.findAll();
+        String category_ = request.getParameter("category");
+        int category = (category_ == null) ? 0 : Integer.parseInt(category_);
+
+        List<Product> list;
+        if (category > 0) {
+            System.out.println(category);
+            list = service.findByCategory(category);
+        } else {
+            System.out.println(category);
+            list = service.findAll();
+        }
 
         request.setAttribute("list",list);
-        request.getRequestDispatcher("/WEB-INF/menu/view/list.jsp");
+        request.getRequestDispatcher("/WEB-INF/menu/view/list.jsp").forward(request, response);
     }
 }
