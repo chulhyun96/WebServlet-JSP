@@ -1,14 +1,13 @@
 package web_project.seveltjsp.jsp_PRJ.repository;
 
 import jakarta.servlet.http.HttpServlet;
+import web_project.seveltjsp.jsp_PRJ.entity.Post;
 import web_project.seveltjsp.jsp_PRJ.entity.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-//rep
 public class ProductRepository extends HttpServlet {
     private final String url = "jdbc:oracle:thin:@db.newlecture.com:1521/xepdb1";
     private final String user = "RLAND";
@@ -18,52 +17,56 @@ public class ProductRepository extends HttpServlet {
         Class.forName("oracle.jdbc.driver.OracleDriver");
     }
 
+    private Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(url, user, password);
+    }
+
     public List<Product> findAll() {
-        try {
-                String sql = "select * from ZXC_LIST";
+        String sql = "select * from ZXC_LIST";
 
-                Connection c = DriverManager.getConnection(url, user, password);
-                PreparedStatement st = c.prepareStatement(sql);
-                ResultSet rs = st.executeQuery();
+        try (Connection c = getConnection();
+             PreparedStatement st = c.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
 
+            List<Product> list = new ArrayList<>();
 
-                List<Product> list = new ArrayList<>();
-                while (rs.next()) {
-                    Product product = new Product();
-                    product.setName(rs.getString("NAME"));
-                    product.setImg(rs.getString("IMG"));
-                    product.setPrice(rs.getInt("PRICE"));
-                    product.setCategory(rs.getInt("CATEGORY"));
-                    list.add(product);
-                }
+            while (rs.next()) {
+                list.add(setUpData(rs));
+            }
 
-                return list;
-            } catch (SQLException e) {
+            return list;
+        } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
     }
 
     public List<Product> findByCategory(int category) {
-        List<Product> list = new ArrayList<>();
         String sql = "select * from ZXC_LIST where CATEGORY = ?";
 
-        try {
-            Connection c = DriverManager.getConnection(url, "RLAND", "0530");
-            PreparedStatement s = c.prepareStatement(sql);
-            s.setInt(1,category);
-            ResultSet rs = s.executeQuery();
+        try (Connection c = getConnection();
+             PreparedStatement s = c.prepareStatement(sql)) {
 
-            while (rs.next()) {
-                Product p = new Product();
-                p.setName(rs.getString("NAME"));
-                p.setPrice(rs.getInt("PRICE"));
-                p.setImg(rs.getString("IMG"));
-                p.setCategory(rs.getInt("CATEGORY"));
-                list.add(p);
+            s.setInt(1, category);
+
+            try (ResultSet rs = s.executeQuery()) {
+                List<Product> list = new ArrayList<>();
+                while (rs.next()) {
+                    list.add(setUpData(rs));
+                }
+                return list;
             }
-            return list;
-         }catch (Exception e) {
+
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private Product setUpData(ResultSet rs) throws SQLException {
+        Product product = new Product();
+        product.setName(rs.getString("NAME"));
+        product.setImg(rs.getString("IMG"));
+        product.setPrice(rs.getInt("PRICE"));
+        product.setCategory(rs.getInt("CATEGORY"));
+        return product;
     }
 }

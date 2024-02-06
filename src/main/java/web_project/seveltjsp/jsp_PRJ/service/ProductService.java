@@ -15,6 +15,7 @@ public class ProductService {
 
     public List<Product> findAll() {
         return rep.findAll();
+
     }
 
     public List<Product> findByCategory(int category) {

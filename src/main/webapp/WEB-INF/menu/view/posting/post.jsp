@@ -42,14 +42,13 @@
     </table>
 
     <div class="flex justify-end">
-        <a href="Posting">
+        <a href="add">
             <button type="submit" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md
-                 hover:text-black hover:bg-white transition-shadow" style="transition: background-color 0.5s, color 0.5s;">
+                 hover:text-black hover:bg-white" style="transition: background-color 0.5s, color 0.5s;">
                 Write
             </button>
         </a>
     </div>
 </div>
 </body>
-
 </html>

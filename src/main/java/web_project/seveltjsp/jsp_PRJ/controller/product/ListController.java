@@ -1,4 +1,4 @@
-package web_project.seveltjsp.jsp_PRJ.controller;
+package web_project.seveltjsp.jsp_PRJ.controller.product;
 
 
 import jakarta.servlet.ServletException;
