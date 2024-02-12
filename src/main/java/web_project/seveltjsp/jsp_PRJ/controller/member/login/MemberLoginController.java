@@ -1,10 +1,11 @@
-package web_project.seveltjsp.jsp_PRJ.controller.member;
+package web_project.seveltjsp.jsp_PRJ.controller.member.login;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import web_project.seveltjsp.jsp_PRJ.model.VO.MemberVO;
 import web_project.seveltjsp.jsp_PRJ.model.service.MemberService;
 
@@ -28,13 +29,26 @@ public class MemberLoginController extends HttpServlet {
         int result = service.login(memberVO.getUserId(), memberVO.getUserPassword());
         System.out.println("result = " + result);
 
+        if (result == 1) {
+            HttpSession session = request.getSession();
+            session.setAttribute("userID", memberVO.getUserId());
 
+            //로그인 했는데 session null임
+            String session1 = (String) session.getAttribute("session");
+            System.out.println("session1 = " + session1);
+
+            request.setAttribute("memberVO",memberVO);
+            String viewPath = "/WEB-INF/post/postList.jsp";
+            request.getRequestDispatcher(viewPath).forward(request, response);
+            return;
+        }
 
         request.setAttribute("result",result);
         request.setAttribute("memberVO",memberVO);
 
-        String viewPath = "/WEB-INF/member/loginCom.jsp";
+        String viewPath = "/WEB-INF/member/loginFail.jsp";
         request.getRequestDispatcher(viewPath).forward(request, response);
+
 
     }
 }

@@ -6,10 +6,13 @@
 </head>
 <body>
 <h1>로그인 화면</h1>
+<div style="display: flex">
     <form method="get" action="member/login">
         UserID : <input type="text" name="userID">
-        PW : <input type="text" name="userPassword">
+        PW : <input type="password" name="userPassword">
         <button type="submit">로그인</button>
     </form>
+    <a href="member/add-form"><button type="submit">회원가입</button></a>
+</div>
 </body>
 </html>

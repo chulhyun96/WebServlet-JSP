@@ -1,5 +1,7 @@
 package web_project.seveltjsp.jsp_PRJ.model.repository;
 
+import web_project.seveltjsp.jsp_PRJ.model.entity.Member;
+
 import java.sql.*;
 
 public class MemberDAO {
@@ -37,6 +39,43 @@ public class MemberDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -2; // 데이터베이스 오류
+        return -2; // 걍 오류
+    }
+
+    public int addMember(Member member) {
+        String sql = "insert into Member values (?, ?, ?)";
+        try {
+            if (validateDup(member.getUserID())) {
+                final int DUP_ID = -100;
+                return DUP_ID;
+            }
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, member.getUserID());
+            pstmt.setString(2, member.getUserName());
+            pstmt.setString(3, member.getUserPassword());
+            return pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("[ERROR]" + e.getMessage());
+        }
+        return -2; //데이터베이스 오류
+    }
+    private boolean validateDup(String userID) {
+        String sql = "select UserID from Member where UserID = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userID);
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                if(rs.getString(1).equals(userID)) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

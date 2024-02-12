@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import web_project.seveltjsp.jsp_PRJ.model.VO.MemberVO;
 
 @Getter
 @Setter
@@ -23,4 +24,13 @@ public class Member {
     @Column(name = "UserName", nullable = false, length = 20)
     private String userName;
 
+    public Member() {
+    }
+
+    //데이터베이스에 저장됨
+    public Member(MemberVO memberVO) {
+        this.userID = memberVO.getUserId();
+        this.userPassword = memberVO.getUserPassword();
+        this.userName = memberVO.getUserName();
+    }
 }
