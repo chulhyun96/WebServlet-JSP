@@ -5,10 +5,11 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
-
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-
+<h1>로그인 화면</h1>
+    <form method="get" action="member/login">
+        UserID : <input type="text" name="userID">
+        PW : <input type="text" name="userPassword">
+        <button type="submit">로그인</button>
+    </form>
 </body>
 </html>

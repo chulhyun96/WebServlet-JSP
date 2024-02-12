@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaPluginProjectSettings" reExcludeTablePrefixes="" reExcludeColumnPrefixes="" reExcludeTableSuffixes="" reExcludeColumnSuffixes="" />
+  <component name="PersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit name="Default" />
+    </persistence-units>
+  </component>
+  <component name="ReverseEngineeringSettings">
+    <database-infos>
+      <database-info dbms-id="mysql">
+        <mapping-types>
+          <mapping-type sql-type="BIGINT" java-class="java.lang.Long" />
+        </mapping-types>
+      </database-info>
+    </database-infos>
+  </component>
+</project>
