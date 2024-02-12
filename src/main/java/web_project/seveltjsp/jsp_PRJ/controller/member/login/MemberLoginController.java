@@ -32,12 +32,8 @@ public class MemberLoginController extends HttpServlet {
         if (result == 1) {
             HttpSession session = request.getSession();
             session.setAttribute("userID", memberVO.getUserId());
-
-            //로그인 했는데 session null임
-            String session1 = (String) session.getAttribute("session");
-            System.out.println("session1 = " + session1);
-
             request.setAttribute("memberVO",memberVO);
+
             String viewPath = "/WEB-INF/post/postList.jsp";
             request.getRequestDispatcher(viewPath).forward(request, response);
             return;
