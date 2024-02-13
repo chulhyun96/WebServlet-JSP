@@ -13,6 +13,7 @@
         <button type="submit">로그인</button>
     </form>
     <a href="member/add-form"><button type="submit">회원가입</button></a>
+    <a href="/post/list"><button type="submit">게시판 바로가기</button></a>
 </div>
 </body>
 </html>

@@ -15,7 +15,7 @@ import java.util.List;
 
 @WebServlet("/post/list")
 public class PostListController extends HttpServlet {
-    private PostService service;
+    private final PostService service;
 
     public PostListController() {
         this.service = new PostService();
@@ -25,16 +25,16 @@ public class PostListController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         HttpSession session = request.getSession(false);
-        String userId = null;
         List<PostVO> findAll = service.findAll();
 
-        if (session != null) {
-            userId = (String) session.getAttribute("userID");
-            request.setAttribute("UserID", userId);
-
+        if (session != null && session.getAttribute("userID") != null) {
+            System.out.println("불림");
+            String viewPath = "/WEB-INF/post/list.jsp";
+            request.getRequestDispatcher(viewPath).forward(request, response);
+            return;
         }
-
-        String viewPath = "/WEB-INF/post/postList.jsp";
+        System.out.println("안불림");
+        String viewPath = "/";
         request.getRequestDispatcher(viewPath).forward(request, response);
     }
 }

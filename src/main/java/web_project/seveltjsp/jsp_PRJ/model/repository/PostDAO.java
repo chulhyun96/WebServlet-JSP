@@ -30,4 +30,5 @@ public class PostDAO {
     public List<PostVO> findAll() {
         return new ArrayList<PostVO>();
     }
+
 }
