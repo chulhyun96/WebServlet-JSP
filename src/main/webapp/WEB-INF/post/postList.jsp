@@ -15,7 +15,8 @@
 <div class="flex justify-center pt-10 pl-4 text-3xl italic antialiased font-serif">
     <h1>Q&A</h1>
 </div>
-<h1 style="margin-left: 20px">User ID : ${memberVO.userId} 이용중 </h1>
+<h1 style="margin-left: 20px"> User ID : ${userID} 이용중 </h1>
+<button type="submit"><a href="/member/logout">로그아웃 </a></button>
 <div class="container mx-auto mt-10">
     <table class="min-w-full table-auto">
         <thead class="bg-gray-200">
