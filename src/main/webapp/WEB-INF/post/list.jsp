@@ -13,10 +13,18 @@
 
 <body>
 <div class="flex justify-center pt-10 pl-4 text-3xl italic antialiased font-serif">
-    <h1>Q&A</h1>
+    <h1 class="italic antialiased font-serif">Board</h1>
 </div>
-<h1 style="margin-left: 20px"> User ID : ${userID} 이용중 </h1>
-<button type="submit"><a href="/member/logout">로그아웃 </a></button>
+<div class="bg-white p-8 rounded-lg shadow-lg" style="width:250px;">
+    <a href="/member/logout">
+        <h1 class="block text-sm font-medium text-white-700">User ID</h1>
+        <h3 class="mt-1 block w-full rounded-md border-black-300 shadow-xm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">${userID}</h3>
+        <button type="submit" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md
+                 hover:text-black hover:bg-white" style="transition: background-color 0.5s, color 0.5s;">
+            Logout
+        </button>
+    </a>
+</div>
 <div class="container mx-auto mt-10">
     <table class="min-w-full table-auto">
         <thead class="bg-gray-200">
@@ -45,7 +53,7 @@
     </table>
 
     <div class="flex justify-end">
-        <a href="add">
+        <a href="add-form">
             <button type="submit" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md
                  hover:text-black hover:bg-white" style="transition: background-color 0.5s, color 0.5s;">
                 Write

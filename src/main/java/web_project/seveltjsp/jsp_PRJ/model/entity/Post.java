@@ -14,6 +14,7 @@ import java.time.Instant;
 @Table(name = "Post", schema = "WEB")
 public class Post {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TableID", nullable = false)
     private Integer id;
 
@@ -26,7 +27,7 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "UserID", nullable = false)
-    private Member userID;
+    private Member member;
 
     @Column(name = "Created_Date")
     private Instant createdDate;
@@ -34,4 +35,13 @@ public class Post {
     @Column(name = "Update_Date")
     private Instant updateDate;
 
+    @Column(name = "Available")
+    private Integer available;
+    public Post() {
+    }
+    public Post(String subject, String content, Member member) {
+        this.subject = subject;
+        this.content = content;
+        this.member = member;
+    }
 }

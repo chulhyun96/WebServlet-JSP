@@ -27,6 +27,10 @@ public class Member {
     public Member() {
     }
 
+    public Member(String userID) {
+        this.userID = userID;
+    }
+
     //데이터베이스에 저장됨
     public Member(MemberVO memberVO) {
         this.userID = memberVO.getUserId();
