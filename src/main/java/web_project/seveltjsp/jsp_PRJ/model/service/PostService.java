@@ -1,8 +1,11 @@
 package web_project.seveltjsp.jsp_PRJ.model.service;
 
+import web_project.seveltjsp.jsp_PRJ.model.VO.PostVO;
 import web_project.seveltjsp.jsp_PRJ.model.entity.Member;
 import web_project.seveltjsp.jsp_PRJ.model.entity.Post;
 import web_project.seveltjsp.jsp_PRJ.model.repository.PostDAO;
+
+import java.util.List;
 
 public class PostService {
     private PostDAO rep;
@@ -19,7 +22,9 @@ public class PostService {
     public Member findByUserId(String userId) {
         return rep.findByUserId(userId);
     }
-    /*public List<PostVO> findAll() {
-        return rep.findAll();
-    }*/
+
+    public List<PostVO> findAll(int pageNumber) {
+        List<PostVO> list = rep.findAll(pageNumber);
+
+    }
 }

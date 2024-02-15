@@ -31,21 +31,21 @@
         <tr>
             <th class="px-4 py-2 pl-4 text-lg text-center italic antialiased font-serif">No</th>
             <th class="px-4 py-2 pl-4 text-lg text-center italic antialiased font-serif">Subject</th>
+            <th class="px-4 py-2 pl-4 text-lg text-center italic antialiased font-serif">Content</th>
             <th class="px-4 py-2 pl-4 text-lg text-center italic antialiased font-serif">Writer</th>
-            <th class="px-4 py-2 pl-4 text-lg text-center italic antialiased font-serif">Hit</th>
             <th class="px-4 py-2 pl-4 text-lg text-center italic antialiased font-serif">Date</th>
             <!-- 여기에 더 많은 열 제목 추가 -->
         </tr>
         </thead>
 
         <tbody>
-        <c:forEach var="post" items="${PostList}">
+        <c:forEach var="post" items="${size}">
             <tr>
-                <td class="border px-4 py-2">${post.id}</td>
-                <td class="border px-4 py-2">${post.title}</td>
+                <td class="border px-4 py-2">${post.tableId}</td>
+                <td class="border px-4 py-2">${post.subject}</td>
                 <td class="border px-4 py-2">${post.content}</td>
-                <td class="border px-4 py-2">${post.createdAt}</td>
-                <td class="border px-4 py-2">${post.author}</td>
+                <td class="border px-4 py-2">${post.userId}</td>
+                <td class="border px-4 py-2">${post.formattedDate}</td>
             </tr>
         </c:forEach>
         <!-- 여기에 더 많은 행 추가 -->

@@ -30,7 +30,13 @@ public class PostAddController extends HttpServlet {
         Member member = service.findByUserId(userId);
 
         PostVO postVO = PostVO.createPost(subject, content, member.getUserID());
-        service.submitPost(postVO.getSubject(), postVO.getContent(), member);
-        response.sendRedirect("list");
+        int result = service.submitPost(postVO.getSubject(), postVO.getContent(), member);
+
+        final int FAIL = 0;
+        if (result > FAIL) {
+            response.sendRedirect("list");
+            return;
+        }
+        response.sendRedirect("/");
     }
 }
