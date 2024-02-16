@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet("/member/add")
 public class MemberAddController extends HttpServlet {
-    private static final String VIEW_PATH = "/WEB-INF/member/loginWelcome.jsp";
+    private static final String VIEW_PATH = "/WEB-INF/member/signIn.jsp";
     private MemberService service;
     public MemberAddController() {
         this.service = new MemberService();

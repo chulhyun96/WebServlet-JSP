@@ -35,6 +35,7 @@ public class MemberLoginController extends HttpServlet {
             response.sendRedirect("/post/list");
             return;
         }
+        System.out.println("asd");
 
 
         request.setAttribute("result",result);

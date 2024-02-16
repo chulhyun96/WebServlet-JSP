@@ -10,7 +10,7 @@
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
 <div class="bg-white p-8 rounded-lg shadow-lg">
-    <form method="get" action="member/login" class="flex flex-col space-y-4">
+    <form method="get" action="/member/login" class="flex flex-col space-y-4">
         <div>
             <label for="userID" class="block text-sm font-medium text-white-700">UserID</label>
             <input type="text" name="userID" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>

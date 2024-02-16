@@ -112,6 +112,7 @@ public class PostDAO {
 
             if (rs.next()) {
                 PostVO postVO = new PostVO();
+                postVO.setUserId(rs.getString("UserID"));
                 postVO.setSubject(rs.getString("Subject"));
                 postVO.setContent(rs.getString("Content"));
                 return postVO;
@@ -131,6 +132,7 @@ public class PostDAO {
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 PostVO postVO = new PostVO();
+                postVO.setUserId(rs.getString("userId"));
                 postVO.setSubject(rs.getString("Subject"));
                 postVO.setContent(rs.getString("Content"));
                 return postVO;

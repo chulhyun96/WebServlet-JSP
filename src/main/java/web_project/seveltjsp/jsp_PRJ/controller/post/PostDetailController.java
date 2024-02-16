@@ -22,20 +22,24 @@ public class PostDetailController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
 
-        String userId = (String) session.getAttribute("userID");
-        String postWriter = request.getParameter("userId");
+        // 세션값으로 들어온 userId로 게시글을 찾아야 되는데 현재 코드 처럼 돼있으면 무조건 true가 뜬다.
+        // 이렇게 되면 로그인한 사람이랑 게시글을 작성한 사람이랑 달라야되는데 무조건 똑같다
+        // 그럼 게시글을 선택하면 작성자Id를 받아야 되는데
 
-        if (userId.equals(postWriter)) {
-            PostVO postVO = service.findPostByUserId(userId);
-            request.setAttribute("postVO", postVO);
+        String userId = (String) session.getAttribute("userID");
+        String tableId = request.getParameter("tableId");
+        PostVO post = service.getPost(tableId);
+
+
+        if (userId.equals(post.getUserId())) {
+            request.setAttribute("postVO", post);
             String viewPath = "/WEB-INF/post/deleteUpdate.jsp";
             request.getRequestDispatcher(viewPath).forward(request, response);
             return;
         }
 
+
         //로그인한 사람것의 게시글이 아닐경우
-        String tableId = request.getParameter("tableId");
-        PostVO post = service.getPost(tableId);
         request.setAttribute("post",post);
         String viewPath = "/WEB-INF/post/detail.jsp";
         request.getRequestDispatcher(viewPath).forward(request, response);
