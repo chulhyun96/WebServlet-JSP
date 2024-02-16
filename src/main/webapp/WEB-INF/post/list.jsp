@@ -42,7 +42,7 @@
         <c:forEach var="post" items="${size}">
             <tr>
                 <td id="post" class="border px-4 py-2">${post.tableId}</td>
-                <td id="post" class="border px-4 py-2"><a href="detail?tableId=${post.tableId}">${post.subject}</a></td>
+                <td id="post" class="border px-4 py-2"><a href="detail?tableId=${post.tableId}&userId=${post.userId}">${post.subject}</a></td>
                 <td id="post" class="border px-4 py-2">${post.content}</td>
                 <td id="post" class="border px-4 py-2">${post.userId}</td>
                 <td id="post" class="border px-4 py-2">${post.formattedDate}</td>

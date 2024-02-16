@@ -34,4 +34,8 @@ public class PostService {
     public PostVO getPost(String tableId) {
         return rep.getPost(tableId);
     }
+
+    public PostVO findPostByUserId(String userId) {
+        return rep.findPostByUserId(userId);
+    }
 }

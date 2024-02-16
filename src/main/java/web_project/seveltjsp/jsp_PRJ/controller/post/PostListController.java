@@ -33,12 +33,12 @@ public class PostListController extends HttpServlet {
             List<PostVO> findAll = service.findAll(pageNumber);
 
             int totalPages = service.getTotalPages();
-
             request.setAttribute("pages",totalPages);
             request.setAttribute("size",findAll);
             request.getRequestDispatcher(VIEW_PATH).forward(request, response);
             return;
         }
+        //로그인을 안하고 게시판으로 넘어갈 시
         request.getRequestDispatcher(ERROR_VIEW).forward(request, response);
     }
 

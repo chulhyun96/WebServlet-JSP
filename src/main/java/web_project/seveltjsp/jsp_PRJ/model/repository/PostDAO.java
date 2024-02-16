@@ -121,4 +121,24 @@ public class PostDAO {
         }
         return null;
     }
+
+    public PostVO findPostByUserId(String userId) {
+        String sql = "select * from WEB.Post JOIN WEB.Member ON WEB.Member.UserID = WEB.Post.UserID" +
+                " WHERE Member.UserID = ? and Available = 1";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,userId);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                PostVO postVO = new PostVO();
+                postVO.setSubject(rs.getString("Subject"));
+                postVO.setContent(rs.getString("Content"));
+                return postVO;
+            }
+        } catch (SQLException e) {
+            System.out.println("e = " + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+        return null;
+    }
 }
