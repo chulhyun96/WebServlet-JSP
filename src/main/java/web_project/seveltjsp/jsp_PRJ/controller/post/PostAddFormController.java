@@ -11,7 +11,6 @@ import java.io.IOException;
 
 @WebServlet("/post/add-form")
 public class PostAddFormController extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String viewPath = "/WEB-INF/post/form.jsp";

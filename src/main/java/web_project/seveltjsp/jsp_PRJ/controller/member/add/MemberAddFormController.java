@@ -13,9 +13,7 @@ import java.io.IOException;
 public class MemberAddFormController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("호출");
         String viewPath = "/WEB-INF/member/addForm.jsp";
         request.getRequestDispatcher(viewPath).forward(request,response);
-        System.out.println("호출끝");
     }
 }

@@ -28,6 +28,12 @@ public class PostListController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession(false);
 
+        if (loginUser(request, response, session)) return;
+
+        request.getRequestDispatcher(ERROR_VIEW).forward(request, response);
+    }
+
+    private boolean loginUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
         if (session != null && session.getAttribute("userID") != null) {
             int pageNumber = getPageNumber(request);
             List<PostVO> findAll = service.findAll(pageNumber);
@@ -36,10 +42,9 @@ public class PostListController extends HttpServlet {
             request.setAttribute("pages",totalPages);
             request.setAttribute("size",findAll);
             request.getRequestDispatcher(VIEW_PATH).forward(request, response);
-            return;
+            return true;
         }
-        //로그인을 안하고 게시판으로 넘어갈 시
-        request.getRequestDispatcher(ERROR_VIEW).forward(request, response);
+        return false;
     }
 
     private int getPageNumber(HttpServletRequest request) {
