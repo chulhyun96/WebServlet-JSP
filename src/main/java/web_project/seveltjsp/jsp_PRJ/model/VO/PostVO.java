@@ -14,8 +14,8 @@ public class PostVO {
     private String content;
     private String userId;
     private LocalDateTime createdDate;
-    private String formattedDate;
     private LocalDateTime updatedDate;
+    private String formattedDate;
     private int tableId;
     private int available;
     public PostVO() {
@@ -26,16 +26,6 @@ public class PostVO {
         this.userId = userId;
     }
 
-    //하나의 게시글
-    public PostVO(int tableId, String subject, String content, String userId, LocalDateTime createdDate) {
-        this.tableId = tableId;
-        this.subject = subject;
-        this.content = content;
-        this.userId = getMaskedName(userId);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMdd-HH:mm");
-        this.createdDate = createdDate;
-        this.formattedDate = createdDate.format(formatter);
-    }
 
     private String getMaskedName(String userId) {
         if (userId.equals("관리자")) {
@@ -43,6 +33,16 @@ public class PostVO {
         }
         String stars = "**".repeat(userId.length() - 1);
         return userId.charAt(0) + stars;
+    }
+    //하나의 게시글
+    public PostVO(int tableId, String subject, String content, String userId, LocalDateTime createdDate) {
+        this.tableId = tableId;
+        this.subject = subject;
+        this.content = content;
+        this.userId = getMaskedName(userId);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+        this.createdDate = createdDate;
+        this.formattedDate = createdDate.format(formatter);
     }
     //글 작성
     public static PostVO createPost(String subject, String content,String userId) {

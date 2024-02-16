@@ -15,6 +15,9 @@ import java.util.List;
 
 @WebServlet("/post/list")
 public class PostListController extends HttpServlet {
+    private static final String VIEW_PATH = "/WEB-INF/post/list.jsp";
+    private static final String ERROR_VIEW  = "/WEB-INF/error/error.jsp";
+
     private final PostService service;
 
     public PostListController() {
@@ -26,21 +29,23 @@ public class PostListController extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (session != null && session.getAttribute("userID") != null) {
-            String page = request.getParameter("page");
-
-            final int DEFAULT_PAGE = 1;
-            int pageNumber = (page == null) ? DEFAULT_PAGE : Integer.parseInt(page);
-
+            int pageNumber = getPageNumber(request);
             List<PostVO> findAll = service.findAll(pageNumber);
 
+            int totalPages = service.getTotalPages();
 
-
-            String viewPath = "/WEB-INF/post/list.jsp";
+            request.setAttribute("pages",totalPages);
             request.setAttribute("size",findAll);
-            request.getRequestDispatcher(viewPath).forward(request, response);
+            request.getRequestDispatcher(VIEW_PATH).forward(request, response);
             return;
         }
-        String viewPath = "/WEB-INF/error/error.jsp";
-        request.getRequestDispatcher(viewPath).forward(request, response);
+        request.getRequestDispatcher(ERROR_VIEW).forward(request, response);
+    }
+
+    private int getPageNumber(HttpServletRequest request) {
+        String page = request.getParameter("page");
+        final int DEFAULT_PAGE = 1;
+        return (page == null) ? DEFAULT_PAGE : Integer.parseInt(page);
     }
 }
+

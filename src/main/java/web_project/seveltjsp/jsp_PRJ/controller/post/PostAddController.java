@@ -37,6 +37,7 @@ public class PostAddController extends HttpServlet {
             response.sendRedirect("list");
             return;
         }
+
         response.sendRedirect("/");
     }
 }

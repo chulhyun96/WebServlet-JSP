@@ -7,14 +7,13 @@ import web_project.seveltjsp.jsp_PRJ.model.entity.Post;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
 
 public class PostDAO {
     private Connection conn;
     private PreparedStatement pstmt;
     private ResultSet rs;
+    private static final int PER_PAGE_POST = 5;
 
     public PostDAO() {
         try {
@@ -64,25 +63,21 @@ public class PostDAO {
 
     public List<PostVO> findAll(int pageNumber) {
         List<PostVO> list = new ArrayList<>();
-        String sql = "SELECT * FROM WEB.Post WHERE Post.Available = 1 ORDER BY TableID desc limit 5 offset ? ";
+        String sql = "SELECT * FROM WEB.Post WHERE Post.Available = 1 ORDER BY TableID DESC limit 5 offset ? ";
         System.out.println("sql = " + sql);
         try {
-            int limit = 5;
-            int offset = (pageNumber - 1) * limit;
+            int offset = (pageNumber - 1) * PER_PAGE_POST;
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, offset);
             rs = pstmt.executeQuery();
-            PostVO postVO = null;
+
+            PostVO postVO;
             while (rs.next()) {
                 int tableId = rs.getInt("TableID");
                 String subject = rs.getString("Subject");
                 String content = rs.getString("Content");
                 String userId = rs.getString("UserID");
-
-                Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Seoul"));
-                Timestamp timestamp = rs.getTimestamp("Created_Date", cal);
-                LocalDateTime createdDate = timestamp.toLocalDateTime();
-
+                LocalDateTime createdDate = rs.getTimestamp("Created_Date").toLocalDateTime();
                 postVO = new PostVO(tableId, subject, content, userId, createdDate);
                 list.add(postVO);
             }
@@ -90,5 +85,40 @@ public class PostDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public int countPage() {
+        String sql = "select COUNT(*) from WEB.Post where Available = 1";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            int totalPages = 0;
+            if (rs.next()) {
+                totalPages = rs.getInt(1);
+            }
+            return (int) Math.ceil((double) totalPages / PER_PAGE_POST);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    public PostVO getPost(String tableId) {
+        String sql = "select * from WEB.Post where TableID = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, tableId);
+            System.out.println("sql = " + sql);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                PostVO postVO = new PostVO();
+                postVO.setSubject(rs.getString("Subject"));
+                postVO.setContent(rs.getString("Content"));
+                return postVO;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

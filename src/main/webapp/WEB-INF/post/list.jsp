@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
-    <title>문서 제목</title>
+    <title>Board</title>
 
 </head>
 
@@ -41,17 +41,24 @@
         <tbody>
         <c:forEach var="post" items="${size}">
             <tr>
-                <td class="border px-4 py-2">${post.tableId}</td>
-                <td class="border px-4 py-2">${post.subject}</td>
-                <td class="border px-4 py-2">${post.content}</td>
-                <td class="border px-4 py-2">${post.userId}</td>
-                <td class="border px-4 py-2">${post.formattedDate}</td>
+                <td id="post" class="border px-4 py-2">${post.tableId}</td>
+                <td id="post" class="border px-4 py-2"><a href="detail?tableId=${post.tableId}">${post.subject}</a></td>
+                <td id="post" class="border px-4 py-2">${post.content}</td>
+                <td id="post" class="border px-4 py-2">${post.userId}</td>
+                <td id="post" class="border px-4 py-2">${post.formattedDate}</td>
             </tr>
         </c:forEach>
         <!-- 여기에 더 많은 행 추가 -->
         </tbody>
     </table>
-
+    <div class="flex justify-center space-x-2">
+        <c:forEach begin="1" end="${pages}" var="page">
+            <a href="list?page=${page}"
+               class="px-4 py-2 border rounded-md text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring transition duration-150 ease-in-out">
+                    ${page}
+            </a>
+        </c:forEach>
+    </div>
     <div class="flex justify-end">
         <a href="add-form">
             <button type="submit" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md

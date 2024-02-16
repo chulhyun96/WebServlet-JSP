@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet("/member/add")
 public class MemberAddController extends HttpServlet {
+    private static final String VIEW_PATH = "/WEB-INF/member/loginWelcome.jsp";
     private MemberService service;
     public MemberAddController() {
         this.service = new MemberService();
@@ -31,9 +32,6 @@ public class MemberAddController extends HttpServlet {
 
         request.setAttribute("memberVO", memberVO);
         request.setAttribute("result", result);
-
-        String viewPath = "/WEB-INF/member/loginWelcome.jsp";
-        request.getRequestDispatcher(viewPath).forward(request, response);
-
+        request.getRequestDispatcher(VIEW_PATH).forward(request, response);
     }
 }

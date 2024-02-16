@@ -24,7 +24,14 @@ public class PostService {
     }
 
     public List<PostVO> findAll(int pageNumber) {
-        List<PostVO> list = rep.findAll(pageNumber);
+        return rep.findAll(pageNumber);
+    }
 
+    public int getTotalPages() {
+        return rep.countPage();
+    }
+
+    public PostVO getPost(String tableId) {
+        return rep.getPost(tableId);
     }
 }
