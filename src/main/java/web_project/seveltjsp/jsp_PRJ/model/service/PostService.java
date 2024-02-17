@@ -38,4 +38,11 @@ public class PostService {
     public PostVO findPostByUserId(String userId) {
         return rep.findPostByUserId(userId);
     }
+
+    public boolean checkIfEquals(String userId, String voId) {
+        if (userId.equals(voId)) {
+            return true;
+        }
+        return false;
+    }
 }

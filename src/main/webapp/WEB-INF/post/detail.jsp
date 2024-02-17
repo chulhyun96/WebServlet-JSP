@@ -8,6 +8,7 @@
     <title>Detail Page</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-gray-100 p-10">
     <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="subject">
@@ -26,12 +27,37 @@
             ${post.content}
         </textarea>
     </div>
-    <div class="flex justify-end">
-        <a href="list">
-        <button type="submit" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md hover:text-black hover:bg-white transition-colors duration-500">
-            Back
-        </button>
-        </a>
-    </div>
+
+    <c:choose>
+        <c:when test="${result == false}">
+            <div class="flex justify-end">
+                <a href="list">
+                    <button type="submit" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md hover:text-black hover:bg-white transition-colors duration-500">
+                        Back
+                    </button>
+                </a>
+            </div>
+        </c:when>
+
+        <c:otherwise>
+            <div class="flex justify-end">
+                <a href="delete">
+                    <button type="submit" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md hover:text-black hover:bg-white transition-colors duration-500">
+                        Delete
+                    </button>
+                </a>
+                <a href="update">
+                    <button type="submit" style="margin-left: 10px;" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md hover:text-black hover:bg-white transition-colors duration-500">
+                        Update
+                    </button>
+                </a>
+                <a href="list">
+                    <button type="submit" style="margin-left: 10px;" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md hover:text-black hover:bg-white transition-colors duration-500">
+                        Back
+                    </button>
+                </a>
+            </div>
+        </c:otherwise>
+    </c:choose>
 </body>
 </html>
