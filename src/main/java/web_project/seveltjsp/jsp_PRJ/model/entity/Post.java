@@ -44,4 +44,9 @@ public class Post {
         this.content = content;
         this.member = member;
     }
+    public Post(String subject, String content, int tableId) {
+        this.subject = subject;
+        this.content = content;
+        this.id = tableId;
+    }
 }

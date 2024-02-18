@@ -112,6 +112,7 @@ public class PostDAO {
 
             if (rs.next()) {
                 PostVO postVO = new PostVO();
+                postVO.setTableId(rs.getInt("TableID"));
                 postVO.setUserId(rs.getString("UserID"));
                 postVO.setSubject(rs.getString("Subject"));
                 postVO.setContent(rs.getString("Content"));
@@ -142,5 +143,18 @@ public class PostDAO {
             throw new RuntimeException(e.getMessage());
         }
         return null;
+    }
+
+    public int update(Post updatePost) {
+        String sql = "Update Post set Subject = ?, Content = ? where TableId = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, updatePost.getSubject());
+            pstmt.setString(2, updatePost.getContent());
+            pstmt.setInt(3, updatePost.getId());
+            return pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

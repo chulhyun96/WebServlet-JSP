@@ -39,10 +39,15 @@ public class PostService {
         return rep.findPostByUserId(userId);
     }
 
-    public boolean checkIfEquals(String userId, String voId) {
-        if (userId.equals(voId)) {
+    public boolean checkIfEquals(String userId, String postVoId) {
+        if (userId.equals(postVoId)) {
             return true;
         }
         return false;
+    }
+
+    public int update(PostVO post) {
+        Post updatePost = new Post(post.getSubject(), post.getContent(),post.getTableId());
+        return rep.update(updatePost);
     }
 }

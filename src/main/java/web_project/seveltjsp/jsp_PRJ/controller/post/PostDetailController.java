@@ -29,13 +29,6 @@ public class PostDetailController extends HttpServlet {
 
         boolean result = service.checkIfEquals(userId, post.getUserId());
 
-        /*if (userId.equals(post.getUserId())){
-            request.setAttribute("post", post);
-            String viewPath = "/WEB-INF/post/detail.jsp";
-            request.getRequestDispatcher(viewPath).forward(request, response);
-            return;
-        }*/
-        
         request.setAttribute("result",result);
         request.setAttribute("post",post);
         String viewPath = "/WEB-INF/post/detail.jsp";
