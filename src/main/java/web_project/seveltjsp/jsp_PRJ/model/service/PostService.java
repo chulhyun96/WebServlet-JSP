@@ -35,7 +35,7 @@ public class PostService {
         return rep.findPostByTableId(tableId);
     }
     //내가 쓴글 모두 조회
-    public PostVO findPostByUserId(String userId) {
+    public List<PostVO> findPostByUserId(String userId) {
         return rep.findPostByUserId(userId);
     }
 

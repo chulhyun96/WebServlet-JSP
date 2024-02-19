@@ -18,7 +18,6 @@ public class PostDeleteController extends HttpServlet {
     public PostDeleteController() {
         this.service = new PostService();
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String tableId = request.getParameter("tableId");

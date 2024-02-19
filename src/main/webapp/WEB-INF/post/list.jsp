@@ -67,6 +67,14 @@
             </button>
         </a>
     </div>
+    <div class="flex justify-end">
+        <a href="MyList">
+            <button type="submit" class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md
+                 hover:text-black hover:bg-white" style="transition: background-color 0.5s, color 0.5s;">
+                MyList
+            </button>
+        </a>
+    </div>
 </div>
 </body>
 </html>

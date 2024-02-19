@@ -123,24 +123,30 @@ public class PostDAO {
         return null;
     }
 
-    public PostVO findPostByUserId(String userId) {
+    public List<PostVO> findPostByUserId(String userId) {
         String sql = "select * from WEB.Post JOIN WEB.Member ON WEB.Member.UserID = WEB.Post.UserID" +
                 " WHERE Member.UserID = ? and Available = 1";
+
+        List<PostVO> list = new ArrayList<>();
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,userId);
             rs = pstmt.executeQuery();
-            if (rs.next()) {
-                PostVO postVO = new PostVO();
-                postVO.setUserId(rs.getString("userId"));
-                postVO.setSubject(rs.getString("Subject"));
-                postVO.setContent(rs.getString("Content"));
-                return postVO;
+            PostVO postVO;
+            while (rs.next()) {
+
+                int tableId = rs.getInt("TableID");
+                String subject = rs.getString("Subject");
+                String content = rs.getString("Content");
+                String userID = rs.getString("UserID");
+                LocalDateTime createdDate = rs.getTimestamp("Created_Date").toLocalDateTime();
+                postVO = new PostVO(tableId, subject, content, userID, createdDate);
+                list.add(postVO);
             }
+            return list;
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
-        return null;
     }
 
     public int update(Post updatePost) {
