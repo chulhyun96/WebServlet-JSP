@@ -13,6 +13,7 @@ import java.io.IOException;
 public class PostUpdateFormController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String tableId = request.getParameter("tableId");
 
         String viewPath = "/WEB-INF/post/updateForm.jsp";
         request.getRequestDispatcher(viewPath).forward(request,response);

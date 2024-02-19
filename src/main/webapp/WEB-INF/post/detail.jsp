@@ -56,7 +56,6 @@
                     Update
                 </button>
             </a>
-
             <a href="list">
                 <button type="submit" style="margin-left: 10px;"
                         class="italic antialiased font-serif bg-black text-white mt-3 px-8 py-2 rounded-md hover:text-black hover:bg-white transition-colors duration-500">
