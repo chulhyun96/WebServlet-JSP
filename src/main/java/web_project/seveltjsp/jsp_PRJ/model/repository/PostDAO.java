@@ -107,7 +107,6 @@ public class PostDAO {
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, tableId);
-            System.out.println("sql = " + sql);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -119,7 +118,7 @@ public class PostDAO {
                 return postVO;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
         return null;
     }
@@ -139,7 +138,6 @@ public class PostDAO {
                 return postVO;
             }
         } catch (SQLException e) {
-            System.out.println("e = " + e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
         return null;
@@ -153,6 +151,17 @@ public class PostDAO {
             pstmt.setString(2, updatePost.getContent());
             pstmt.setInt(3, updatePost.getId());
             return pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(PostVO postVO) {
+        String sql = "Update Post set Available = 0 where TableID = ?";
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, postVO.getTableId());
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

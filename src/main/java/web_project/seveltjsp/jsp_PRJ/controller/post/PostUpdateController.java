@@ -26,6 +26,7 @@ public class PostUpdateController extends HttpServlet {
         PostVO postVO = PostVO.updatePost(tableId, subject, content);
 
         int result = service.update(postVO);
+
         if (result > 0) {
             response.sendRedirect("/post/list");
             return;

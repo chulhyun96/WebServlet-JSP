@@ -50,4 +50,8 @@ public class PostService {
         Post updatePost = new Post(postVO.getSubject(), postVO.getContent(),postVO.getTableId());
         return rep.update(updatePost);
     }
+
+    public void delete(PostVO postVO) {
+        rep.delete(postVO);
+    }
 }
