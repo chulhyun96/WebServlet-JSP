@@ -135,6 +135,7 @@ public class PostDAO {
             PostVO postVO;
             while (rs.next()) {
 
+
                 int tableId = rs.getInt("TableID");
                 String subject = rs.getString("Subject");
                 String content = rs.getString("Content");
