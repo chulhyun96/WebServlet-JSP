@@ -21,8 +21,7 @@ public class PostUpdateFormController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String tableId = request.getParameter("tableId");
-        System.out.println("tableId = " + tableId);
-        PostVO post = service.getPost(tableId);
+        PostVO post = service.findPostByTableId(tableId);
 
         request.setAttribute("post",post);
         String viewPath = "/WEB-INF/post/updateForm.jsp";

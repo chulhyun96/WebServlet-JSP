@@ -24,7 +24,7 @@ public class PostDetailController extends HttpServlet {
         
         String userId = (String) session.getAttribute("userID");
         String tableId = request.getParameter("tableId");
-        PostVO post = service.getPost(tableId);
+        PostVO post = service.findPostByTableId(tableId);
 
 
         boolean result = service.checkIfEquals(userId, post.getUserId());

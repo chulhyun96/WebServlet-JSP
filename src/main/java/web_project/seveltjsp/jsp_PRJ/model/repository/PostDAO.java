@@ -102,7 +102,7 @@ public class PostDAO {
         }
     }
 
-    public PostVO getPost(String tableId) {
+    public PostVO findPostByTableId(String tableId) {
         String sql = "select * from WEB.Post where TableID = ?";
         try {
             pstmt = conn.prepareStatement(sql);

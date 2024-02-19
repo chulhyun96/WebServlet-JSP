@@ -31,8 +31,8 @@ public class PostService {
         return rep.countPage();
     }
 
-    public PostVO getPost(String tableId) {
-        return rep.getPost(tableId);
+    public PostVO findPostByTableId(String tableId) {
+        return rep.findPostByTableId(tableId);
     }
     //내가 쓴글 모두 조회
     public PostVO findPostByUserId(String userId) {
