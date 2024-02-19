@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import web_project.seveltjsp.jsp_PRJ.model.VO.PostVO;
 import web_project.seveltjsp.jsp_PRJ.model.service.PostService;
 
 import java.io.IOException;
@@ -19,10 +20,16 @@ public class PostUpdateController extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String tableId = request.getParameter("tableId");
-        System.out.println("tableId = " + tableId);
+        int tableId = Integer.parseInt(request.getParameter("tableId"));
         String subject = request.getParameter("subject");
         String content = request.getParameter("content");
+        PostVO postVO = PostVO.updatePost(tableId, subject, content);
+
+        int result = service.update(postVO);
+        if (result > 0) {
+            response.sendRedirect("/post/list");
+            return;
+        }
 
         String viewPath = "/WEB-INF/error/updateError.jsp";
         request.getRequestDispatcher(viewPath).forward(request,response);

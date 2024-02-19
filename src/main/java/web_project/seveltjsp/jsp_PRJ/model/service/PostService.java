@@ -34,7 +34,7 @@ public class PostService {
     public PostVO getPost(String tableId) {
         return rep.getPost(tableId);
     }
-
+    //내가 쓴글 모두 조회
     public PostVO findPostByUserId(String userId) {
         return rep.findPostByUserId(userId);
     }
@@ -46,8 +46,8 @@ public class PostService {
         return false;
     }
 
-    public int update(PostVO post) {
-        Post updatePost = new Post(post.getSubject(), post.getContent(),post.getTableId());
+    public int update(PostVO postVO) {
+        Post updatePost = new Post(postVO.getSubject(), postVO.getContent(),postVO.getTableId());
         return rep.update(updatePost);
     }
 }
