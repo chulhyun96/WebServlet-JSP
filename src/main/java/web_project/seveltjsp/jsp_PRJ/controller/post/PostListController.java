@@ -2,19 +2,18 @@ package web_project.seveltjsp.jsp_PRJ.controller.post;
 
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import web_project.seveltjsp.jsp_PRJ.controller.Controller;
+import web_project.seveltjsp.jsp_PRJ.controller.ModelView;
 import web_project.seveltjsp.jsp_PRJ.model.VO.PostVO;
 import web_project.seveltjsp.jsp_PRJ.model.service.PostService;
 
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/post/list")
-public class PostListController extends HttpServlet {
+public class PostListController implements Controller {
     private static final String VIEW_PATH = "/WEB-INF/post/list.jsp";
     private static final String ERROR_VIEW  = "/WEB-INF/error/error.jsp";
 
@@ -24,16 +23,13 @@ public class PostListController extends HttpServlet {
         this.service = new PostService();
     }
 
+
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public ModelView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-
-        if (loginUser(request, response, session)) return;
-
-        request.getRequestDispatcher(ERROR_VIEW).forward(request, response);
+        return getModelView(request, response, session);
     }
-
-    private boolean loginUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
+    private ModelView getModelView(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {
         if (session != null && session.getAttribute("userID") != null) {
             int pageNumber = getPageNumber(request);
             List<PostVO> findAll = service.findAll(pageNumber);
@@ -42,9 +38,10 @@ public class PostListController extends HttpServlet {
             request.setAttribute("pages",totalPages);
             request.setAttribute("size",findAll);
             request.getRequestDispatcher(VIEW_PATH).forward(request, response);
-            return true;
+            return new ModelView("/post/list");
         }
-        return false;
+
+        return new ModelView("/error/error");
     }
 
     private int getPageNumber(HttpServletRequest request) {

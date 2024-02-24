@@ -2,20 +2,19 @@ package web_project.seveltjsp.jsp_PRJ.controller.member.login;
 
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import web_project.seveltjsp.jsp_PRJ.controller.Controller;
+import web_project.seveltjsp.jsp_PRJ.controller.ModelView;
 
 import java.io.IOException;
 
-@WebServlet("/member/logout")
-public class MemberLogoutController extends HttpServlet {
+public class MemberLogoutController implements Controller {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public ModelView service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        response.sendRedirect("/");
+        return new ModelView("../");
     }
 }
