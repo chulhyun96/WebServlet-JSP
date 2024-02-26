@@ -38,7 +38,7 @@ public class MemberFrontController extends HttpServlet {
         viewForwarder.render(request, response);
     }
 
-    private ViewForwarder viewResolver(String viewName) {
+    public ViewForwarder viewResolver(String viewName) {
         return new ViewForwarder("/WEB-INF/member/" + viewName + ".jsp");
     }
 }

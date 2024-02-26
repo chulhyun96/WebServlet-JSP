@@ -18,6 +18,11 @@ public class PostFrontController extends HttpServlet {
     private Map<String, Controller> mappingController = new HashMap<>();
 
     public PostFrontController() {
+        initMapping();
+
+    }
+
+    private void initMapping() {
         mappingController.put("/post/add", new PostAddController());
         mappingController.put("/post/add-form", new PostAddFormController());
         mappingController.put("/post/list", new PostListController());
@@ -37,8 +42,7 @@ public class PostFrontController extends HttpServlet {
         ViewForwarder viewForwarder = viewResolver(mv.getViewName());
         viewForwarder.render(request, response);
     }
-
-    private ViewForwarder viewResolver(String viewName) {
+    public ViewForwarder viewResolver(String viewName) {
         return new ViewForwarder("/WEB-INF/post/" + viewName + ".jsp");
     }
 }
