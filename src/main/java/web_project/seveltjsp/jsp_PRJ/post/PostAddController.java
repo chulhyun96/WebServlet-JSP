@@ -1,4 +1,4 @@
-package web_project.seveltjsp.jsp_PRJ.front_controller.post;
+package web_project.seveltjsp.jsp_PRJ.post;
 
 
 import jakarta.servlet.ServletException;

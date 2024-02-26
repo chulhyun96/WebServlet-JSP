@@ -1,9 +1,11 @@
-package web_project.seveltjsp.jsp_PRJ.front_controller.post;
+package web_project.seveltjsp.jsp_PRJ.post;
 
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import web_project.seveltjsp.jsp_PRJ.controller.servlet.Controller;
+import web_project.seveltjsp.jsp_PRJ.controller.servlet.ModelView;
 import web_project.seveltjsp.jsp_PRJ.front_controller.model.VO.PostVO;
 import web_project.seveltjsp.jsp_PRJ.front_controller.model.service.PostService;
 

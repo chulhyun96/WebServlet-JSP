@@ -1,9 +1,11 @@
-package web_project.seveltjsp.jsp_PRJ.front_controller.member.login;
+package web_project.seveltjsp.jsp_PRJ.member.login;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import web_project.seveltjsp.jsp_PRJ.controller.servlet.Controller;
+import web_project.seveltjsp.jsp_PRJ.controller.servlet.ModelView;
 import web_project.seveltjsp.jsp_PRJ.front_controller.model.VO.MemberVO;
 import web_project.seveltjsp.jsp_PRJ.front_controller.model.service.MemberService;
 
