@@ -1,4 +1,4 @@
-package web_project.seveltjsp.jsp_PRJ.model.entity;
+package web_project.seveltjsp.jsp_PRJ.front_controller.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import web_project.seveltjsp.jsp_PRJ.model.VO.MemberVO;
+import web_project.seveltjsp.jsp_PRJ.front_controller.model.VO.MemberVO;
 
 @Getter
 @Setter

@@ -1,8 +1,8 @@
-package web_project.seveltjsp.jsp_PRJ.model.repository;
+package web_project.seveltjsp.jsp_PRJ.front_controller.model.repository;
 
-import web_project.seveltjsp.jsp_PRJ.model.VO.PostVO;
-import web_project.seveltjsp.jsp_PRJ.model.entity.Member;
-import web_project.seveltjsp.jsp_PRJ.model.entity.Post;
+import web_project.seveltjsp.jsp_PRJ.front_controller.model.VO.PostVO;
+import web_project.seveltjsp.jsp_PRJ.front_controller.model.entity.Member;
+import web_project.seveltjsp.jsp_PRJ.front_controller.model.entity.Post;
 
 import java.sql.*;
 import java.time.LocalDateTime;

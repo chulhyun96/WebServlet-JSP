@@ -1,9 +1,9 @@
-package web_project.seveltjsp.jsp_PRJ.model.service;
+package web_project.seveltjsp.jsp_PRJ.front_controller.model.service;
 
-import web_project.seveltjsp.jsp_PRJ.model.VO.PostVO;
-import web_project.seveltjsp.jsp_PRJ.model.entity.Member;
-import web_project.seveltjsp.jsp_PRJ.model.entity.Post;
-import web_project.seveltjsp.jsp_PRJ.model.repository.PostDAO;
+import web_project.seveltjsp.jsp_PRJ.front_controller.model.VO.PostVO;
+import web_project.seveltjsp.jsp_PRJ.front_controller.model.entity.Member;
+import web_project.seveltjsp.jsp_PRJ.front_controller.model.entity.Post;
+import web_project.seveltjsp.jsp_PRJ.front_controller.model.repository.PostDAO;
 
 import java.util.List;
 

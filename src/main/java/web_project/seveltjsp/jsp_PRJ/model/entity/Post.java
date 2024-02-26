@@ -1,4 +1,4 @@
-package web_project.seveltjsp.jsp_PRJ.model.entity;
+package web_project.seveltjsp.jsp_PRJ.front_controller.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

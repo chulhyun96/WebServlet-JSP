@@ -1,4 +1,4 @@
-package web_project.seveltjsp.jsp_PRJ.model.VO;
+package web_project.seveltjsp.jsp_PRJ.front_controller.model.VO;
 
 
 import lombok.Getter;

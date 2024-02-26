@@ -5,13 +5,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import web_project.seveltjsp.jsp_PRJ.controller.ModelView;
-import web_project.seveltjsp.jsp_PRJ.controller.ViewForwarder;
-import web_project.seveltjsp.jsp_PRJ.controller.member.add.MemberAddController;
-import web_project.seveltjsp.jsp_PRJ.controller.member.add.MemberAddFormController;
-import web_project.seveltjsp.jsp_PRJ.controller.member.login.MemberLoginController;
-import web_project.seveltjsp.jsp_PRJ.controller.member.login.MemberLogoutController;
-import web_project.seveltjsp.jsp_PRJ.controller.post.*;
+import web_project.seveltjsp.jsp_PRJ.controller.servlet.member.add.MemberAddController;
+import web_project.seveltjsp.jsp_PRJ.controller.servlet.member.add.MemberAddFormController;
+import web_project.seveltjsp.jsp_PRJ.controller.servlet.member.login.MemberLoginController;
+import web_project.seveltjsp.jsp_PRJ.controller.servlet.member.login.MemberLogoutController;
+import web_project.seveltjsp.jsp_PRJ.controller.servlet.post.*;
 
 import java.io.IOException;
 import java.util.ArrayList;

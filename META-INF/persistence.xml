@@ -5,10 +5,10 @@
              version="3.0">
   <persistence-unit name="default">
 
-      <class>web_project.seveltjsp.jsp_PRJ.model.entity.dataMemberEntity</class>
-      <class>web_project.seveltjsp.jsp_PRJ.model.entity.dataPostEntity</class>
-      <class>web_project.seveltjsp.jsp_PRJ.model.entity.MemberEntity</class>
-      <class>web_project.seveltjsp.jsp_PRJ.model.entity.PostEntity</class>
+      <class>web_project.seveltjsp.jsp_PRJ.front_controller.model.entity.dataMemberEntity</class>
+      <class>web_project.seveltjsp.jsp_PRJ.front_controller.model.entity.dataPostEntity</class>
+      <class>web_project.seveltjsp.jsp_PRJ.front_controller.model.entity.MemberEntity</class>
+      <class>web_project.seveltjsp.jsp_PRJ.front_controller.model.entity.PostEntity</class>
       <properties>
           <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306"/>
           <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>

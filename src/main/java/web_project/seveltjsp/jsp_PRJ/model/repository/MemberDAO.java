@@ -1,6 +1,6 @@
-package web_project.seveltjsp.jsp_PRJ.model.repository;
+package web_project.seveltjsp.jsp_PRJ.front_controller.model.repository;
 
-import web_project.seveltjsp.jsp_PRJ.model.entity.Member;
+import web_project.seveltjsp.jsp_PRJ.front_controller.model.entity.Member;
 
 import java.sql.*;
 
