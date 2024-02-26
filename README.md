@@ -2,7 +2,7 @@
 
 <h3> 해당 저장소는 WebServlet과 JSP만을 이용하여 간단한 게시판을 만들어보는 저장소입니다.</h3>
 
-Servlet을 기본 베이스로 스프링의 진입 전에 JSP, MVC 패턴 -> JSP, FrontController -> SQL Mapper, FrontController
+Servlet을 기본 베이스로 스프링의 진입 전에 JSP, MVC 패턴 -> JSP, FrontController, Adapter 패턴 -> SQL Mapper, MVC 패턴
 단계로 점차 발전시킬 예정입니다.
 
 (해당 버전은 MVC 패턴에 대한 이해가 부족한 상황에서 학습을 위한 원격 저장소이며, VO 및 DTO에 대한 정의가 부족한 상태입니다.)

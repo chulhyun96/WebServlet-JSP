@@ -27,12 +27,10 @@ public class AdapterFrontController extends HttpServlet {
     public AdapterFrontController() {
         initMappingURI();
         initAdapter();
-
     }
     private void initAdapter() {
         adapterList.add(new MyHandler());
     }
-
     private void initMappingURI() {
         handlerMappingMap.put("/post/add", new PostAddController());
         handlerMappingMap.put("/post/add-form", new PostAddFormController());
